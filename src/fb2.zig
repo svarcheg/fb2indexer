@@ -101,10 +101,21 @@ pub fn parse(allocator: Allocator, path: []const u8) !Metadata {
     const file = try std.fs.cwd().openFile(path, .{});
     defer file.close();
 
-    const data = try file.readToEndAlloc(allocator, 64 * 1024 * 1024); // 64 MiB max
-    defer allocator.free(data);
+    const stat = try file.stat();
+    const file_size = stat.size;
+    if (file_size == 0) return Metadata{};
 
-    return parseBytes(allocator, data);
+    const mapped = try std.posix.mmap(
+        null,
+        file_size,
+        std.posix.PROT.READ,
+        .{ .TYPE = .PRIVATE },
+        file.handle,
+        0,
+    );
+    defer std.posix.munmap(mapped);
+
+    return parseBytes(allocator, mapped);
 }
 
 pub fn parseBytes(allocator: Allocator, data: []const u8) !Metadata {
