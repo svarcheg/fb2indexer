@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+  <description>
+    <title-info>
+      <genre>fiction</genre>
+      <author>
+        <first-name>Lewis</first-name>
+        <middle-name>B</middle-name>
+        <last-name>Carroll</last-name>
+      </author>
+      <book-title>Alice's Adventures in Wonderland</book-title>
+      <annotation>
+        <p>Alice falls down a rabbit hole into a fantasy world populated by peculiar creatures.</p>
+        <p>A classic of English literature.</p>
+      </annotation>
+      <sequence name="Wonderland" number="1"/>
+      <coverpage>
+        <image l:href="#cover.jpg"/>
+      </coverpage>
+    </title-info>
+  </description>
+  <body>
+    <section>
+      <title><p>Chapter 1</p></title>
+      <p>Alice was beginning to get very tired of sitting by her sister on the bank.</p>
+    </section>
+  </body>
+  <binary id="cover.jpg" content-type="image/jpeg">/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a</binary>
+</FictionBook>
